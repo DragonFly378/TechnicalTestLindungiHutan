@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<navigation-bar title="Tugas Harian" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+<view class="container">
+  <view class="header">Daftar Tugas Harian</view>
+  <view class="task-list">
+    <block wx:for="{{tasks}}" wx:for-item="task" wx:for-index="index">
+      <view class="task-item">
+        <checkbox checked="{{task.completed}}" bindchange="toggleTaskCompletion" data-index="{{index}}">
+        {{task.title}}
+        </checkbox>
+        <button class="delete-button" data-index="{{index}}" bindtap="deleteTask">Hapus</button>
+      </view>
+    </block>
+  </view>
+  <input class="new-task-input" placeholder="Tambahkan tugas baru" bindinput="handleInput"/>
+  <button class="add-task-button"  bindtap="addTask">Tambah Tugas</button>
+</view>
+</scroll-view>
